@@ -25,6 +25,8 @@ Example add-on by Community Home Assistant add-ons.
 
 ## About
 
+Thomas Example
+
 This is an example add-on for Home Assistant. When started, it displays a
 random quote every 5 seconds.
 
