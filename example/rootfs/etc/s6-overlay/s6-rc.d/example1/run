@@ -1,10 +1,5 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
-# ==============================================================================
-# Home Assistant Community Add-on: Example
-# Runs example1 script
-# ==============================================================================
-
-bashio::log.info "Starting Example1..."
-
-exec /usr/bin/example1.sh
+# Minimal hello service
+bashio::log.info "Starting Hello service..."
+exec /usr/bin/hello.sh

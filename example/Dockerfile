@@ -5,10 +5,15 @@ FROM ${BUILD_FROM}
 # Copy root filesystem
 COPY rootfs /
 
-# Setup base
+# Setup base and tools to normalize scripts
 RUN apk add --no-cache \
-    coreutils=9.7-r1 \
-    wget=1.25.0-r1
+        coreutils=9.7-r1 \
+        wget=1.25.0-r1 \
+        dos2unix \
+    && \
+    # Normalize line endings and ensure executables have +x
+    find /etc/s6-overlay/s6-rc.d -type f \( -name run -o -name finish -o -name up -o -name down \) -exec dos2unix {} + -exec chmod +x {} + && \
+    find /usr/bin -type f -name "*.sh" -exec dos2unix {} + -exec chmod +x {} +
 
 # Build arguments
 ARG BUILD_ARCH
